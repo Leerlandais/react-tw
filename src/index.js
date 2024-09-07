@@ -7,7 +7,7 @@ import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App class="bg-amber-100 h-screen w-screen" />
+    <App class="bg-gradient-to-br from-green-400 to-green-400 via-cyan-600 h-screen w-screen" />
   </React.StrictMode>
 );
 
