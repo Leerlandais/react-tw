@@ -1,9 +1,9 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function createInitialTodos() {
     const initialTodos = [];
-
+        
 
     return initialTodos;
 }
@@ -14,8 +14,13 @@ function TodoList() {
 
     function handleRem(id) {
         setTodos(todos.filter(item => item.id !== id));
+        localStorage.removeItem("todo"+id);
 
     }
+    useEffect(() => {
+        // storing input name
+        localStorage.setItem("todo"+todos.length, JSON.stringify(text));
+    }, [text]);
     return (
         <div className="text-center pt-12">
             <input
