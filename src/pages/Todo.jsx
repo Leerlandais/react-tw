@@ -1,20 +1,18 @@
 import { useState, useEffect } from "react";
 import Button from "../components/Button";
+
 function Todo() {
-    const [todos, setTodos] = useState([]);
+    const [todos, setTodos] = useState(() => {
+        const storedTodos = JSON.parse(localStorage.getItem('todos'));
+        return storedTodos || [];
+    });
+
     const [task, setTask] = useState('');
 
-    // Load TODOs from local storage on app startup
     useEffect(() => {
-        const storedTodos = JSON.parse(localStorage.getItem('todos'));
-        if (storedTodos) {
-            setTodos(storedTodos);
+        if (todos.length > 0 || localStorage.getItem('todos')) {
+            localStorage.setItem('todos', JSON.stringify(todos));
         }
-    }, []);
-
-    // Update local storage whenever TODOs change
-    useEffect(() => {
-        localStorage.setItem('todos', JSON.stringify(todos));
     }, [todos]);
 
     const handleAddTodo = () => {
@@ -30,28 +28,28 @@ function Todo() {
     };
 
     return (
-        <div className="App">
-            <header className="App-header">
-                <h1>TODO App</h1>
-                <div className="todo-input">
-                    <input
-                        type="text"
-                        placeholder="Add a new task"
-                        value={task}
-                        onChange={(e) => setTask(e.target.value)}
-                    />
-                    <button onClick={handleAddTodo}>Add</button>
-                </div>
-                <ul className="todo-list">
-                    {todos.map((todo, index) => (
-                        <li key={index}>
-                            {todo}
-                            <Button btnName="Remove" onClick={() => handleRemoveTodo(index)}></Button>
-                        </li>
-                    ))}
-                </ul>
-            </header>
-        </div>
+        <>
+            <div className="text-center pt-48 pb-8">
+                <input
+                    type="text"
+                    value={task}
+                    onChange={(e) => setTask(e.target.value)}
+                />
+                <Button btnName="Add" bgColor="bg-blue-500" onClick={handleAddTodo} />
+            </div>
+            <div>
+            <ul className="text-center text-4xl pb-4">
+                {todos.map((todo, index) => (
+                    <div className="mx-auto flex justify-center items-center">
+                    <li className="flex justify-around w-auto" key={index}>
+                        {todo}
+                    </li>
+                    <Button btnName="X" bgColor="bg-red-400" onClick={() => handleRemoveTodo(index)} />
+                    </div>
+                ))}
+            </ul>
+            </div>
+        </>
     );
 }
 

@@ -44,15 +44,15 @@ function TodoList() {
                 value={text}
                 onChange={e => setText(e.target.value)}
             />
-            <Button onClick={() => {
+            <Button btnName="Add" onClick={() => {
                 setText('');
                 setTodos([{ id: todos.length, text }, ...todos]);
-            }}>Add</ Button>
+            }}></ Button>
             <ul>
                 {todos.map(item => (
                     <li key={item.id}>
                         {item.text}
-                        <button className={"smallBtn"} onClick={() => handleRem(item.id)}>Remove</button>
+                        <Button btnName="Remove" onClick={() => handleRem(item.id)}></Button>
                     </li>
                 ))}
             </ul>
