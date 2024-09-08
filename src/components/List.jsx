@@ -3,9 +3,23 @@ import { useState, useEffect } from 'react';
 
 function createInitialTodos() {
     const initialTodos = [];
-        
+    for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
 
-    return initialTodos;
+        if (key.startsWith("todo")) {
+            const storedTodo = localStorage.getItem(key);
+            try {
+                const todo = JSON.parse(storedTodo);
+                const id = parseInt(key.replace("todo", ""), 10);
+                if (todo && todo.text !== undefined) {
+                    initialTodos.push({ id, text: todo.text });
+                }
+            } catch (e) {
+                console.error("Error parsing todo from localStorage:", e);
+            }
+        }
+    }
+        return initialTodos.sort((a, b) => a.id - b.id);
 }
 
 function TodoList() {
@@ -14,13 +28,16 @@ function TodoList() {
 
     function handleRem(id) {
         setTodos(todos.filter(item => item.id !== id));
-        localStorage.removeItem("todo"+id);
-
+        localStorage.removeItem("todo" + id);
     }
+
     useEffect(() => {
-        // storing input name
-        localStorage.setItem("todo"+todos.length, JSON.stringify(text));
+        if (text) {
+            const nextId = todos.length > 0 ? todos[0].id + 1 : 0;
+            localStorage.setItem("todo" + nextId, JSON.stringify({ text }));
+        }
     }, [text]);
+
     return (
         <div className="text-center pt-12">
             <input
@@ -29,10 +46,7 @@ function TodoList() {
             />
             <button onClick={() => {
                 setText('');
-                setTodos([{
-                    id: todos.length,
-                    text: text
-                }, ...todos]);
+                setTodos([{ id: todos.length, text }, ...todos]);
             }}>Add</button>
             <ul>
                 {todos.map(item => (
@@ -46,4 +60,4 @@ function TodoList() {
     );
 }
 
-export default TodoList
+export default TodoList;
