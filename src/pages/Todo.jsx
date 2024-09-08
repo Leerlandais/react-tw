@@ -41,7 +41,7 @@ function Todo() {
             <ul className="text-center text-4xl pb-4">
                 {todos.map((todo, index) => (
                     <div className="mx-auto flex justify-center items-center">
-                    <li className="flex justify-around w-auto" key={index}>
+                    <li className="flex justify-around w-auto min-w-48 h-14" key={index}>
                         {todo}
                     </li>
                     <Button btnName="X" bgColor="bg-red-400" onClick={() => handleRemoveTodo(index)} />
