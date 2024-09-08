@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from 'react';
-
+import Button from "./Button";
 function createInitialTodos() {
     const initialTodos = [];
     for (let i = 0; i < localStorage.length; i++) {
@@ -44,10 +44,10 @@ function TodoList() {
                 value={text}
                 onChange={e => setText(e.target.value)}
             />
-            <button onClick={() => {
+            <Button onClick={() => {
                 setText('');
                 setTodos([{ id: todos.length, text }, ...todos]);
-            }}>Add</button>
+            }}>Add</ Button>
             <ul>
                 {todos.map(item => (
                     <li key={item.id}>

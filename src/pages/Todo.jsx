@@ -1,30 +1,58 @@
-import { useState, useEffect } from "react"
-import List from "../components/List";
-import Header from "../components/Header";
+import { useState, useEffect } from "react";
+import Button from "../components/Button";
+function Todo() {
+    const [todos, setTodos] = useState([]);
+    const [task, setTask] = useState('');
 
-export default function Todo() {
-
-    function GetList () {
-        const checkLocal = localStorage.getItem("checkLocal");
-        if (!checkLocal) {
-            return (
-                <div className="text-center pt-12">
-                There are no items in the list. <br /> Yet!
-                </div>
-            )
-        } else {
-            return (
-                <div className="text-center pt-12">
-                    Isn't this fun
-                </div>
-            )
+    // Load TODOs from local storage on app startup
+    useEffect(() => {
+        const storedTodos = JSON.parse(localStorage.getItem('todos'));
+        if (storedTodos) {
+            setTodos(storedTodos);
         }
-    }
+    }, []);
+
+    // Update local storage whenever TODOs change
+    useEffect(() => {
+        localStorage.setItem('todos', JSON.stringify(todos));
+    }, [todos]);
+
+    const handleAddTodo = () => {
+        if (task.trim() !== '') {
+            setTodos([...todos, task]);
+            setTask('');
+        }
+    };
+
+    const handleRemoveTodo = (index) => {
+        const newTodos = todos.filter((_, i) => i !== index);
+        setTodos(newTodos);
+    };
+
     return (
-        <>
-            <Header name="ToDo List" />
-            <GetList />
-            <List />
-        </>
-    )
+        <div className="App">
+            <header className="App-header">
+                <h1>TODO App</h1>
+                <div className="todo-input">
+                    <input
+                        type="text"
+                        placeholder="Add a new task"
+                        value={task}
+                        onChange={(e) => setTask(e.target.value)}
+                    />
+                    <button onClick={handleAddTodo}>Add</button>
+                </div>
+                <ul className="todo-list">
+                    {todos.map((todo, index) => (
+                        <li key={index}>
+                            {todo}
+                            <Button btnName="Remove" onClick={() => handleRemoveTodo(index)}></Button>
+                        </li>
+                    ))}
+                </ul>
+            </header>
+        </div>
+    );
 }
+
+export default Todo;
