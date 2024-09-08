@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import List from "../components/List";
 import Header from "../components/Header";
 
 export default function Todo() {
@@ -23,6 +24,7 @@ export default function Todo() {
         <>
             <Header name="ToDo List" />
             <GetList />
+            <List />
         </>
     )
 }
