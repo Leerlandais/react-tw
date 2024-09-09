@@ -1,3 +1,4 @@
+import Button from "./Button";
 export default function Calculator(props) {
     return (
         <div className="p-8 rounded-lg shadow-xl border-2 border-gray-500 mb-10 w-[20%] mx-auto mt-4">
@@ -8,27 +9,27 @@ export default function Calculator(props) {
                    placeholder="0"
                    readOnly/>
 
-            <div className="grid grid-cols-4 gap-2">
-                <button onClick="clearResult()">C</button>
-                <button onClick="appendCharacter('(')">(</button>
-                <button onClick="appendCharacter(')')">)</button>
-                <button onClick="appendCharacter('/')" className="symButtons symButton">/</button>
-                <button onClick="appendCharacter('7')">7</button>
-                <button onClick="appendCharacter('8')">8</button>
-                <button onClick="appendCharacter('9')">9</button>
-                <button onClick="appendCharacter('*')" className="symButtons symButton">*</button>
-                <button onClick="appendCharacter('4')">4</button>
-                <button onClick="appendCharacter('5')">5</button>
-                <button onClick="appendCharacter('6')">6</button>
-                <button onClick="appendCharacter('-')" className="symButton">-</button>
-                <button onClick="appendCharacter('1')">1</button>
-                <button onClick="appendCharacter('2')">2</button>
-                <button onClick="appendCharacter('3')">3</button>
-                <button onClick="appendCharacter('+')" className="symButtons symButton">+</button>
-                <button onClick="appendCharacter('0')">0</button>
-                <button onClick="appendCharacter('.')">.</button>
-                <button onClick="calculateResult()" className="symButtons symButton">=</button>
-                <button onClick="appendCharacter('%')" className="symButtons symButton">%</button>
+            <div className="grid grid-cols-4 gap-1">
+                <Button onClick="clearResult()" bgColor="bg-gray-600" btnName="C" />
+                <Button onClick="appendCharacter('(')" bgColor="bg-black" btnName="(" />
+                <Button onClick="appendCharacter(')')" bgColor="bg-black" btnName=")" />
+                <Button onClick="appendCharacter('/')" bgColor="bg-black" btnName="/" />
+                <Button onClick="appendCharacter('7')" bgColor="bg-black" btnName="7" />
+                <Button onClick="appendCharacter('8')" bgColor="bg-black" btnName="8" />
+                <Button onClick="appendCharacter('9')" bgColor="bg-black" btnName="9" />
+                <Button onClick="appendCharacter('*')" bgColor="bg-black" btnName="*" />
+                <Button onClick="appendCharacter('4')" bgColor="bg-black" btnName="4" />
+                <Button onClick="appendCharacter('5')" bgColor="bg-black" btnName="5" />
+                <Button onClick="appendCharacter('6')" bgColor="bg-black" btnName="6" />
+                <Button onClick="appendCharacter('-')" bgColor="bg-black" btnName="-" />
+                <Button onClick="appendCharacter('1')" bgColor="bg-black" btnName="1" />
+                <Button onClick="appendCharacter('2')" bgColor="bg-black" btnName="2" />
+                <Button onClick="appendCharacter('3')" bgColor="bg-black" btnName="3" />
+                <Button onClick="appendCharacter('+')" bgColor="bg-black" btnName="+" />
+                <Button onClick="appendCharacter('0')" bgColor="bg-black" btnName="0" />
+                <Button onClick="appendCharacter('.')" bgColor="bg-black" btnName="." />
+                <Button onClick="calculateResult()"    bgColor="bg-green-800" btnName="=" />
+                <Button onClick="appendCharacter('%')" bgColor="bg-black" btnName="%" />
             </div>
         </div>
     )
