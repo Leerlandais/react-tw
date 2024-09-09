@@ -1,6 +1,6 @@
 
 
-export default function Err404() {
+export default function PageErr404() {
     return (
         <div>
             <h1 className="text-4xl font-bold leading-tight

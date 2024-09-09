@@ -6,6 +6,8 @@ return (
             <Link linkTo="/" linkName="Home"/>
             <Link linkTo="/todo" linkName="ToDo List"/>
             <Link linkTo="/calc" linkName="Calculator"/>
+            <Link linkTo="/form" linkName="Form"/>
+            <Link linkTo="/test" linkName="Test"/>
 
         </ul>
     </nav>

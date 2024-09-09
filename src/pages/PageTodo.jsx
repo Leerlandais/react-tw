@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Button from "../components/Button";
 
-function Todo() {
+function PageTodo() {
     const [todos, setTodos] = useState(() => {
         const storedTodos = JSON.parse(localStorage.getItem('todos'));
         return storedTodos || [];
@@ -53,4 +53,4 @@ function Todo() {
     );
 }
 
-export default Todo;
+export default PageTodo;

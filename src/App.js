@@ -1,11 +1,13 @@
 
 import './App.css';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
-import Err404 from "./pages/Err404";
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import PageHome from './pages/PageHome';
+import PageErr404 from "./pages/PageErr404";
 import NavBar from "./components/NavBar";
-import Todo from "./pages/Todo";
-import Calc from "./pages/Calc";
+import PageTodo from "./pages/PageTodo";
+import PageCalc from "./pages/PageCalc";
+import PageForm from "./pages/PageForm"
+import PageTest from "./pages/PageTest";
 
 function App(props) {
   return (
@@ -13,10 +15,12 @@ function App(props) {
         <div className={props.class}>
             <NavBar />
           <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/todo" element={<Todo />} />
-              <Route path="/calc" element={<Calc />} />
-              <Route path="*" element={< Err404 />} />
+              <Route path="/" element={<PageHome />} />
+              <Route path="/todo" element={<PageTodo />} />
+              <Route path="/calc" element={<PageCalc />} />
+              <Route path="/form" element={<PageForm />} />
+              <Route path="/test" element={<PageTest />} />
+              <Route path="*" element={< PageErr404 />} />
           </Routes>
     </div>
         </Router>
