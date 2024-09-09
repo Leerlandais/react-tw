@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import Err404 from "./pages/Err404";
 import NavBar from "./components/NavBar";
 import Todo from "./pages/Todo";
+import Calc from "./pages/Calc";
 
 function App(props) {
   return (
@@ -14,6 +15,7 @@ function App(props) {
           <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/todo" element={<Todo />} />
+              <Route path="/calc" element={<Calc />} />
               <Route path="*" element={< Err404 />} />
           </Routes>
     </div>

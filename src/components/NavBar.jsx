@@ -5,6 +5,7 @@ return (
         <ul className="navbar-nav text-center pt-8 flex justify-center text-blue-900">
             <Link linkTo="/" linkName="Home"/>
             <Link linkTo="/todo" linkName="ToDo List"/>
+            <Link linkTo="/calc" linkName="Calculator"/>
 
         </ul>
     </nav>
