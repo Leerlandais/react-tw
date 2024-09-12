@@ -5,6 +5,7 @@ import PageHome from './pages/PageHome';
 import PageErr404 from "./pages/PageErr404";
 import NavBar from "./components/NavBar";
 import PageTodo from "./pages/PageTodo";
+import PageTodo2 from "./pages/PageTodo2";
 import PageCalc from "./pages/PageCalc";
 import PageForm from "./pages/PageForm"
 import PageTest from "./pages/PageTest";
@@ -17,6 +18,7 @@ function App(props) {
           <Routes>
               <Route path="/" element={<PageHome />} />
               <Route path="/todo" element={<PageTodo />} />
+              <Route path="/todo2" element={<PageTodo2 />} />
               <Route path="/calc" element={<PageCalc />} />
               <Route path="/form" element={<PageForm />} />
               <Route path="/test" element={<PageTest />} />
